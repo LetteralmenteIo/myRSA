@@ -13,7 +13,6 @@ public class Repl {
       );
     Scanner scanner = new Scanner(System.in);
     while (loop) {
-      //
       logger.log(Level.INFO,
       "\n1) Generate RSA keys (public + private);" +
       "\n2) Cript a text;" +
@@ -24,7 +23,7 @@ public class Repl {
       
       String option;
       while (true) {
-        option = scanner.next();
+        option = scanner.nextLine();
         if (LibRSA.isInt(option)) {
           if (Integer.parseInt(option) >= 1 && Integer.parseInt(option) <= 4) {
             break;
@@ -58,7 +57,7 @@ public class Repl {
         break;
         case 2:
           logger.log(Level.INFO,"Insert the message:");
-          String encriptedMessage = scanner.next();
+          String encriptedMessage = scanner.nextLine();
           while (true) {
             logger.log(Level.INFO,"Insert n");
             givenN = scanner.next();
@@ -69,7 +68,7 @@ public class Repl {
             }
           }
           while (true) {
-            logger.log(Level.INFO,"Insert e");
+            logger.log(Level.INFO,"Insert e or d");
             givenE = scanner.next();
             if (LibRSA.isInt(option)) {
               break;
@@ -84,7 +83,7 @@ public class Repl {
         break;
         case 3:
           logger.log(Level.INFO,"Insert the message:");
-          String criptedMessage = scanner.next();
+          String criptedMessage = scanner.nextLine();
           while (true) {
             logger.log(Level.INFO,"Insert n");
             givenN = scanner.next();
@@ -95,7 +94,7 @@ public class Repl {
             }
           }
           while (true) {
-            logger.log(Level.INFO,"Insert d");
+            logger.log(Level.INFO,"Insert e or d");
             givenD = scanner.next();
             if (LibRSA.isInt(option)) {
               break;
@@ -115,4 +114,3 @@ public class Repl {
     scanner.close();
   }    
 }
-

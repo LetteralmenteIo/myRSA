@@ -63,12 +63,12 @@ public class LibRSA {
         }
     }
 
-    public static String textEncript(String encriptedMessage, BigInteger n, BigInteger e) {
+    public static String textEncript(String encriptedMessage, BigInteger n, BigInteger eOrD) {
         String criptedMessage = "";
         char[] charArray = encriptedMessage.toCharArray();
         System.out.println(charArray);
         for (int i = 0; i < encriptedMessage.length() ; i++) {
-            criptedMessage = criptedMessage + ((BigInteger.valueOf((int)charArray[i])).modPow(e,n));
+            criptedMessage = criptedMessage + ((BigInteger.valueOf((int)charArray[i])).modPow(eOrD,n));
             if (i != encriptedMessage.length()-1 ) {
                 criptedMessage += ";";
             }
@@ -76,12 +76,12 @@ public class LibRSA {
         return(criptedMessage);
     }
 
-    public static String textDecript(String criptedMessage, BigInteger n, BigInteger d) {
+    public static String textDecript(String criptedMessage, BigInteger n, BigInteger eOrD) {
         String decriptedMessage = "";
         StringTokenizer slicedMessage = new StringTokenizer(criptedMessage, ";");
 
         while (slicedMessage.hasMoreElements()) {
-            decriptedMessage += new String((BigInteger.valueOf(Integer.parseInt(slicedMessage.nextToken()))).modPow(d, n).toByteArray());
+            decriptedMessage += new String((BigInteger.valueOf(Integer.parseInt(slicedMessage.nextToken()))).modPow(eOrD, n).toByteArray());
         }
         return(decriptedMessage);
     }
